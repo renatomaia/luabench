@@ -1,0 +1,5 @@
+typedef sequence<octet> OctetSeq;
+interface DummyService {
+	void operation(in OctetSeq data);
+	void shutdown();
+};
