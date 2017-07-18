@@ -26,8 +26,8 @@ return {
 ### Execution
 
 	$ cd src
-	$ lua run.lua ../test/novars
-	$ lua plot.lua tabplot ../test/novars/*.csv
+	$ lua run.lua ../demo/novars
+	$ lua plot.lua tabplot ../demo/novars/*.csv
 
 ### Results
 
