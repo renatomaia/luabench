@@ -3,6 +3,8 @@ require "luabench.results"
 local Measures = {
 	{ id = "memo", label = "Memory allocated (kilobytes)" },
 	{ id = "used", label = "Memory used (kilobytes)" },
+	{ id = "gprc", label = "GC CPU time used (seconds)" },
+	{ id = "gtim", label = "GC time elapsed (seconds)" },
 	{ id = "proc", label = "CPU time used (seconds)" },
 	{ id = "time", label = "Time elapsed (seconds)" },
 }

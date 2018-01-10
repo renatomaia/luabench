@@ -43,7 +43,7 @@ alias case = string
 alias variable = string
 alias dataval = number
 alias varval = number
-enum measure = {"used","memo","proc","time"}
+enum measure = {"used","memo","proc","gprc","time","gtim"}
 table data = {
 	[variable] = varval,
 	[case] = { dataval... }
@@ -59,7 +59,7 @@ table results = {
 function read(file)
 	file = assert(io.open(file))
 	local test = { cases = {}, ivalues = ivalues }
-	for _, measure in ipairs{"used","memo","proc","time"} do
+	for _, measure in ipairs{"used","memo","proc","gprc","time","gtim"} do
 		test[measure] = Matrix()
 	end
 	local colmeasure = {}

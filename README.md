@@ -8,7 +8,7 @@ Example
 
 ### Specification
 
-Input file that describes the micro-benchmark (from `test/novars/benchmark.lua`).
+Input file that describes the micro-benchmark (from [`demo/novars/benchmark.lua`](demo/novars/benchmark.lua)).
 
 ```lua
 return {
@@ -31,28 +31,32 @@ return {
 
 ### Results
 
-Text tables with the obtained average and standard deviation.
+Text tables with the obtained average and standard deviation will be generated at `demo/novars/closure_vs_table.txt`.
 
 	#
 	# Closure vs. Table Creation
-	# Date: Sun Jun 21 10:24:11 2015
+	# Date: Wed Jan 10 01:03:35 2018
 	#
 	____________________________
 	Memory allocated (kilobytes)
 
 	Closure              | Table                | 
-	    24.123 (0.0e+00) |     47.539 (1.6e+03) | 
+	    25.352 (0.0e+00) |     30.123 (0.0e+00) | 
 	_______________________
 	Memory used (kilobytes)
 
 	Closure              | Table                | 
-	    24.092 (0.0e+00) |     23.855 (0.0e+00) | 
+	     25.32 (0.0e+00) |     25.115 (0.0e+00) | 
+	__________________________
+	GC CPU time used (seconds)
+
+	Closure              | Table                | 
+	     6e-06 (0.0e+00) |      8e-06 (0.0e+00) | 
 	_______________________
 	CPU time used (seconds)
 
 	Closure              | Table                | 
-	 0.0044301 (1.1e-02) |   0.055661 (1.6e-01) | 
-
+	  0.002214 (0.0e+00) |   0.015777 (0.0e+00) |
 
 Documentation
 -------------

@@ -50,13 +50,17 @@ _TIME_ = _TIME_ and _NOW_()-_TIME_
 $teardown
 
 local total = collectgarbage("count")
+local gctime = _NOW_ and _NOW_()
+local gccpu = _USAGE_()
 collectgarbage("collect")
+gctime = gctime and _NOW_()-gctime
+gccpu = _USAGE_()-gccpu
 local collected = collectgarbage("count")
 
 -- write results
-io.write(collected,",",total,",",_CPU_)
+io.write(collected,",",total,",",_CPU_,",",gccpu)
 if _TIME_ then
-	io.write(",",_TIME_)
+	io.write(",",_TIME_",",gctime)
 end
 ]=]
 
@@ -143,8 +147,10 @@ function Test:run(path, selection)
 		header[#header+1] = string.format("%q", case.name.."(used)")
 		header[#header+1] = string.format("%q", case.name.."(memo)")
 		header[#header+1] = string.format("%q", case.name.."(proc)")
+		header[#header+1] = string.format("%q", case.name.."(gprc)")
 		if case.gettime then
 			header[#header+1] = string.format("%q", case.name.."(time)")
+			header[#header+1] = string.format("%q", case.name.."(gtim)")
 		end
 	end
 	appendto(output, table.concat(header, ","),",\n")
@@ -184,10 +190,10 @@ function Test:run(path, selection)
 			if info.warmup == true then
 				info.warmup = TestWarmUp:tagged(info)
 			end
-			local used, memo, proc, time = runscript(TestTemplate:tagged(info), case.lua)
-			appendto(output, used,",",memo,",",proc,",")
+			local used, memo, proc, gprc, time, gtim = runscript(TestTemplate:tagged(info), case.lua)
+			appendto(output, used,",",memo,",",proc,",",gprc,",")
 			if case.gettime then
-				appendto(output, time,",")
+				appendto(output, time,",",gtim,",")
 			end
 		end
 		msg(" done")
